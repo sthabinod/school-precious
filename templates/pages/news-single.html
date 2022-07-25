@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block content %} {% include 'header.html' %} {% load static %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{new.featured_image.url}}');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a  href="{% url 'event' %}">News<i class="ion-ios-arrow-forward"></i></a></span> </p>
+                <h1 class="mb-0 bread">{{new}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate">
+                <p>
+                    <img src="{{new.featured_image.url}}" alt="" class="img-fluid">
+                </p>
+                <h2 class="mb-3">{{new.title}}</h2>
+                <p>{{new.description}}</p>
+
+
+
+
+            </div>
+            <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
+
+                <div class="sidebar-box ftco-animate">
+                    <div class="categories">
+                        <h3>Our Recent Events</h3>
+                        {% for event in events %}
+                        <li><a href="{% url 'event-single' event.id %}">{{event.title}} <span class="ion-ios-arrow-forward"></span></a></li>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+{% include 'footer.html' %} {% endblock %}

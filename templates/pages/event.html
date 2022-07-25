@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block content %} {% include 'header.html' %} {% load static %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{company.walpaper.url}}');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Events <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-0 bread">Our Events</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row d-flex">
+            {% for event in events %}
+            <div class="col-md-4 d-flex ftco-animate">
+                <div class="blog-entry align-self-stretch">
+                    <a href="{% url 'event-single' event.id %}" class="block-20 rounded" style="background-image: url({{event.featured_image.url}});">
+                    </a>
+                    <div class="text mt-3 text-center">
+                        <div class="meta mb-2">
+
+                            <div><a href="#">{{event.date}}</a></div>
+
+                            <div><a href="#">{{event.organiser}}</a></div>
+                        </div>
+                        <h2 class="heading" style="text-align:justify;"><a href="{% url 'event-single' event.id %}">{{event.title}}</a></h2>
+
+                        <h3 class="heading" style="text-align:justify;"><a href="{% url 'event-single' event.id %}">{{event.description}}</a></h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+{% include 'footer.html' %} {% endblock %}

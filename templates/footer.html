@@ -1,0 +1,71 @@
+<footer class="footer">
+    <div class="container-fluid px-lg-5">
+        <div class="row">
+            <div class="col-md-12 py-5">
+                <div class="row">
+                    <div class="col-md-4 mb-md-0 mb-4">
+                        <h2 class="footer-heading">Sponsored by: {{company.sponsored_by}}</h2>
+                        <p>{{company.description|truncatewords:"30"|linebreaks}}
+                        </p>
+                        <ul class="ftco-footer-social p-0">
+                            {% if company.twitter %}
+                            <li class="ftco-animate"><a href="{{company.twitter}}" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="ion-logo-twitter"></span></a></li>
+                            {% endif %} {% if company.facebook %}
+                            <li class="ftco-animate"><a href="{{company.facebook}}" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="ion-logo-facebook"></span></a></li>
+                            {% endif %} {% if company.instagram %}
+                            <li class="ftco-animate"><a href="{{company.instagram}}" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="ion-logo-instagram"></span></a></li>
+                            {% endif %} {% if company.youtube %}
+                            <li class="ftco-animate"><a href="{{company.youtube}}" data-toggle="tooltip" data-placement="top" title="Youtube"><span class="ion-logo-youtube"></span></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10">
+                                <div class="row">
+                                    <div class="col-md-4 mb-md-0 mb-4">
+                                        <h2 class="footer-heading">Events</h2>
+                                        <ul class="list-unstyled">
+                                            {% for event in events %}
+                                            <li><a href="{% url 'event' %}" class="py-1 d-block">{{event.title}}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 mb-md-0 mb-4">
+                                        <h2 class="footer-heading">About Us</h2>
+                                        <ul class="list-unstyled">
+                                            {% for about in aboutus %}
+                                            <li><a href="{% url 'about' %}" class="py-1 d-block">{{about}}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 mb-md-0 mb-4">
+                                        <h2 class="footer-heading">Link</h2>
+                                        <ul class="list-unstyled">
+                                            <li><a href="{% url 'bod' %}" class="py-1 d-block">Board Of Directors</a></li>
+                                            <li><a href="{% url 'member-category' %}" class="py-1 d-block">Members</a></li>
+                                            <li><a href="{% url 'home' %}" class="py-1 d-block">Genealogy</a></li>
+                                            <li><a href="{% url 'galleries' %}" class="py-1 d-block">Gallery</a></li>
+                                            <li><a href="{% url 'contact' %}" class="py-1 d-block">Contact</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-md-5">
+                    <div class="col-md-12">
+                        <p class="copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | {{company.name}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>

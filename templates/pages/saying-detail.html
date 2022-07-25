@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %} {% include 'header.html' %}
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container">
+        <div class="row d-flex no-gutters">
+            <div class="col-md-12">
+                <div class="item">
+                    <div class="testimony-wrap py-4">
+                        <div class="text">
+
+                            <div class="d-flex align-items-center">
+
+                                <div class="user-img" style="background-image: url({{saying.image.url}})"></div>
+                                <div class="pl-3">
+                                    <p class="name">{{saying.name}}</p>
+                                    <span class="position">{{saying.job}}</span>
+                                </div>
+
+                            </div>
+                            <div class="d-flex align-items-center mt-3">
+
+                                <div class="pl-3">
+                                    <p>{{saying.description}}</p>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+{% include 'footer.html' %} {% endblock %}

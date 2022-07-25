@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %} {% include 'header.html' %} {% load static %} {% for message in messages %} {% if message.tags == 'error' %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% elif message.tags == 'success' %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div> {% endif %} {% endfor %}
+<div style="margin: 40px auto;" class="col-md-12">
+    <div class="blog-entry">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Reason of leave</th>
+                <th scope="col">Message</th>
+                <th scope="col">Date Applied</th>
+                <th scope="col">Approval</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for leave in leaves %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{leave.reason_of_leave}}</td>
+                <td>{{leave.message}}</td>
+                <td>{{leave.date_applied}}</td>
+
+                <td>
+                    {% if leave.is_approved %}
+                    <i class="fa fa-check text-success"></i>
+                    {% else %}
+                    <i class="fa fa-times text-danger"></i>
+                    {% endif %}
+                    </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          
+          
+    </div>
+</div>
+{% endblock %}

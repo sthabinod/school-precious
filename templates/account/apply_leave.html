@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% block content %} {% include 'header.html' %} {% load static %}
+
+
+<section class="ftco-section">
+    <div class="container">
+        {% for message in messages %} {% if message.tags == 'error' %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% elif message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div> {% endif %} {% endfor %}
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="wrapper">
+                    <div class="row no-gutters mb-5">
+                        <div style=" margin: 0 auto;" class="col-md-7">
+                            <div class="contact-wrap w-100 p-md-5 p-4">
+                                <h3 style="text-align: center;">Leave Form</h3>
+                                <div id="form-message-warning" class="mb-4"></div>
+
+                                <form method="POST" action="{% url 'apply_leave' %}" id="contactForm" name="contactForm" class="contactForm">
+                                    {% csrf_token %}
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="reason">Reason For Leave</label>
+                                                <textarea class="form-control" name="reason" rows="5" id="reason" placeholder="Reason of Leave......."></textarea>
+                                            </div>
+                                        </div>
+
+                                    
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="days">Number of days..</label>
+                                                <input type="number" class="form-control" name="days" id="days" placeholder="Number of days....">
+                                            </div>
+                                        </div>
+
+                                        
+                                   
+
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input style="width: 100%;" type="submit" value="Submit" class="btn btn-primary">
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+{% endblock %}

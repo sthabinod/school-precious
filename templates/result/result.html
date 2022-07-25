@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %} {% include 'header.html' %} {% load static %}
+
+
+<section class="ftco-section">
+
+    <div class="container-fluid px-md-5">
+        <ul>
+
+
+            {% if results %} <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Child Name</th>
+                    <th scope="col">Published Date</th>
+                    <th scope="col">Document</th>
+                    <th scope="col">Passed/Failed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                  <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{result.student.full_name}}</td>
+                    <td>{{result.year}}</td>
+                    <td>{{result.result}}</td>
+    
+                    <td>
+                        {% if result.is_passed %}
+                        <i class="fa fa-check text-success"> &nbsp;Passed</i>
+                        {% else %}
+                        <i class="fa fa-times text-danger">&nbsp;Failed</i>
+                        {% endif %}
+                        </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table> {% else %}
+            <p>There are no result.</p>
+            {% endif %}
+
+        </ul>
+
+    </div>
+</section>
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+{% include 'footer.html' %} {% endblock %}

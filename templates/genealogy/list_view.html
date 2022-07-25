@@ -1,0 +1,93 @@
+{% block content %}{% load static %} {% load mptt_tags %} {% for message in messages %} {{message}} {% endfor %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'mgaccordion.css' %}">
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/materia/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <style type="text/css">
+        a:hover {
+            color: #E75480;
+            text-decoration: none;
+        }
+        
+        body {
+            background: #fafafa;
+        }
+        
+        .container {
+            margin: 150px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <p style="text-align: center;"><b>Note:</b> Click on names to view tree.</p>
+
+        <a href="{% url 'home' %}">Go back </a>
+
+        <div class="row">
+            <div class="col-12 d-flex align-content-start justify-items-evenly">
+                <nav class="my-menu">
+                    <ul class="my-nav">
+                        {% recursetree person %}
+                        <li>
+                            <a href="">ID{{node.id}}. {{ node.first_name }} -Pusta No. {{node.pusta}}</a>{% if not node.is_leaf_node %}
+                            <ul class="children">
+                                {{ children }}
+                            </ul>
+                            {% endif %}
+                        </li>
+                        {% endrecursetree %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'mgaccordion.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.my-nav').mgaccordion();
+            $('.my-nav2').mgaccordion({
+                theme: 'tree',
+                leaveOpen: true
+            });
+        });
+    </script>
+    <script>
+        try {
+            fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", {
+                method: 'HEAD',
+                mode: 'no-cors'
+            })).then(function(response) {
+                return true;
+            }).catch(function(e) {
+                var carbonScript = document.createElement("script");
+                carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+                carbonScript.id = "_carbonads_js";
+                document.getElementById("carbon-block").appendChild(carbonScript);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+{% endblock %}

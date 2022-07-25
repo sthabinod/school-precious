@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ingwaram</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="/static/dist/js/strip.pkgd.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/dist/css/strip.css" />
+
+    <link rel="stylesheet" type="text/css" href="/static/css/gallerystyle.css" />
+    <link rel="stylesheet" href="/static/css/animate.css">
+
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/static/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/static/css/flaticon.css">
+    <link rel="stylesheet" href="/static/css/icomoon.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+     <div class="container pt-5">
+    <div class="row justify-content-between">
+        <div class="col">
+            <a class="navbar-brand" href="/">Ingwaram<span>Samaj</span></a>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <div class="">
+                <p class="mb-0 d-flex">
+                    
+                    <a href="/accountlogout" class="d-flex align-items-center justify-content-center"> <span>admin</span>&nbsp;&nbsp; <span class="fa fa-sign-out"> </span>Logout</a>
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button> 
+        <form action="#" method="POST" class="searchform order-lg-last">
+            <input type="hidden" name="csrfmiddlewaretoken" value="rSScTdyZPzmrXef91bQ0zFcqvBlmlt3O4ewxrg9crrSD9wn8P6L8sNTVSdhU63fZ">
+            <div class="form-group d-flex">
+                <input type="text" class="form-control pl-3" name="search" placeholder="Enter Your ID">
+                <button type="submit" style="cursor: pointer;" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+
+            </div>
+        </form> 
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/genealogy" class="nav-link">Genealogy</a></li>
+
+                 
+                <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+<style>
+    .genealogy-scroll::-webkit-scrollbar {
+        width: 5px;
+        height: 8px;
+    }
+    
+    .genealogy-scroll::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #e4e4e4;
+    }
+    
+    .genealogy-scroll::-webkit-scrollbar-thumb {
+        background: #212121;
+        border-radius: 10px;
+        transition: 0.5s;
+    }
+    
+    .genealogy-scroll::-webkit-scrollbar-thumb:hover {
+        background: #d5b14c;
+        transition: 0.5s;
+    }
+    /*----------------genealogy-tree----------*/
+    
+    .genealogy-body {
+        white-space: nowrap;
+        overflow-y: hidden;
+        padding: 50px;
+        min-height: 500px;
+        padding-top: 10px;
+        text-align: center;
+    }
+    
+    .genealogy-tree {
+        display: inline-block;
+    }
+    
+    .genealogy-tree ul {
+        padding-top: 20px;
+        position: relative;
+        padding-left: 0px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .genealogy-tree li {
+        float: left;
+        text-align: center;
+        list-style-type: none;
+        position: relative;
+        padding: 20px 5px 0 5px;
+    }
+    
+    .genealogy-tree li::before,
+    .genealogy-tree li::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 50%;
+        border-top: 2px solid #ccc;
+        width: 50%;
+        height: 18px;
+    }
+    
+    .genealogy-tree li::after {
+        right: auto;
+        left: 50%;
+        border-left: 2px solid #ccc;
+    }
+    
+    .genealogy-tree li:only-child::after,
+    .genealogy-tree li:only-child::before {
+        display: none;
+    }
+    
+    .genealogy-tree li:only-child {
+        padding-top: 0;
+    }
+    
+    .genealogy-tree li:first-child::before,
+    .genealogy-tree li:last-child::after {
+        border: 0 none;
+    }
+    
+    .genealogy-tree li:last-child::before {
+        border-right: 2px solid #ccc;
+        border-radius: 0 5px 0 0;
+        -webkit-border-radius: 0 5px 0 0;
+        -moz-border-radius: 0 5px 0 0;
+    }
+    
+    .genealogy-tree li:first-child::after {
+        border-radius: 5px 0 0 0;
+        -webkit-border-radius: 5px 0 0 0;
+        -moz-border-radius: 5px 0 0 0;
+    }
+    
+    .genealogy-tree ul ul::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        border-left: 2px solid #ccc;
+        width: 0;
+        height: 20px;
+    }
+    
+    .genealogy-tree ul a {
+        text-decoration: none;
+        color: #666;
+        font-family: arial, verdana, tahoma;
+        font-size: 11px;
+        display: inline-block;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+    }
+    
+    .genealogy-tree ul a:hover+ul li::after,
+    .genealogy-tree ul a:hover+ul li::before,
+    .genealogy-tree ul a:hover+ul::before,
+    .genealogy-tree ul a:hover+ul ul::before {
+        border-color: #fbba00;
+    }
+    /*--------------memeber-card-design----------*/
+    
+    .member-view-box {
+        padding: 0px 20px;
+        text-align: center;
+        border-radius: 4px;
+        position: relative;
+    }
+    
+    .member-image {
+        width: 60px;
+        position: relative;
+    }
+    
+    .member-image img {
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+        background-color: #000;
+        z-index: 1;
+    }
+</style>
+</head>
+
+<body>
+    
+
+
+
+    <div class="body genealogy-body genealogy-scroll">
+        <div class="genealogy-tree">
+            <ul> 
+
+
+                <li>
+                    <span>
+                        <a class="link"  href="javascript:void(0);">
+                            <div  class="member-view-box">
+                                <div class="member-image name">
+                                    
+                                    
+                                   <span ><img src="/media/images/houcine-ncib-B4TjXnI0Y2c-unsplash_ofb0qFb.jpg" alt="Member"></span> 
+
+                    <div class="member-details">
+                        <form action="">
+                            <button><p class="name"> <b>BInod</b> </p></button>
+
+                        </form>
+                        <p class="name"> Pusta: 1 </p>
+                        <p class="name">ID:1</p>
+                    </div>
+        </div>
+    </div>
+    </a>
+    </span> 
+
+    <ul class="active">
+
+        <span>
+    
+                            
+                            
+
+
+                <li>
+                    <span>
+                        <a class="link"  href="javascript:void(0);">
+                            <div  class="member-view-box">
+                                <div class="member-image name">
+                                    
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""> 
+
+                    <div class="member-details">
+                        <form action="">
+                            <button><p class="name"> <b>Bini</b> </p></button>
+
+                        </form>
+                        <p class="name"> Pusta: 2 </p>
+                        <p class="name">ID:2</p>
+                    </div>
+        </div>
+    </div>
+    </a>
+    </span> 
+    </li>
+    
+
+
+                <li>
+                    <span>
+                        <a class="link"  href="javascript:void(0);">
+                            <div  class="member-view-box">
+                                <div class="member-image name">
+                                    
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""> 
+
+                    <div class="member-details">
+                        <form action="">
+                            <button><p class="name"> <b>Binodson</b> </p></button>
+
+                        </form>
+                        <p class="name"> Pusta: 2 </p>
+                        <p class="name">ID:3</p>
+                    </div>
+        </div>
+    </div>
+    </a>
+    </span> 
+    </li>
+    
+                            
+    
+                    </span>
+    </ul>
+    
+    </li>
+    
+    </ul>
+
+    </div>
+    </div>
+
+
+
+
+
+
+    
+    <div class="body genealogy-body genealogy-scroll">
+        <div class="genealogy-tree">
+            <ul> 
+
+
+                <li>
+                    <span>
+                        <a class="link"  href="javascript:void(0);">
+                            <div  class="member-view-box">
+                                <div class="member-image name">
+                                    
+                                    
+                                   <span ><img src="/media/images/houcine-ncib-B4TjXnI0Y2c-unsplash_ofb0qFb.jpg" alt="Member"></span> 
+
+                    <div class="member-details">
+                        <form action="/genealogy/details/1" method="POST">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="rSScTdyZPzmrXef91bQ0zFcqvBlmlt3O4ewxrg9crrSD9wn8P6L8sNTVSdhU63fZ">
+                            <button><p class="name"> <b>BInod</b> </p></button>
+
+                        </form>
+                        <p class="name"> Pusta: 1 </p>
+                        <p class="name">ID:1</p>
+                    </div>
+        </div>
+    </div>
+    </a>
+    </span> 
+
+    <ul class="active">
+
+        <span>
+    
+                            
+                            
+
+
+                <li>
+                    <span>
+                        <a class="link"  href="javascript:void(0);">
+                            <div  class="member-view-box">
+                                <div class="member-image name">
+                                    
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""> 
+
+                    <div class="member-details">
+                        <form action="/genealogy/details/2" method="POST">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="rSScTdyZPzmrXef91bQ0zFcqvBlmlt3O4ewxrg9crrSD9wn8P6L8sNTVSdhU63fZ">
+                            <button><p class="name"> <b>Bini</b> </p></button>
+
+                        </form>
+                        <p class="name"> Pusta: 2 </p>
+                        <p class="name">ID:2</p>
+                    </div>
+        </div>
+    </div>
+    </a>
+    </span> 
+    </li>
+    
+
+
+                <li>
+                    <span>
+                        <a class="link"  href="javascript:void(0);">
+                            <div  class="member-view-box">
+                                <div class="member-image name">
+                                    
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""> 
+
+                    <div class="member-details">
+                        <form action="/genealogy/details/3" method="POST">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="rSScTdyZPzmrXef91bQ0zFcqvBlmlt3O4ewxrg9crrSD9wn8P6L8sNTVSdhU63fZ">
+                            <button><p class="name"> <b>Binodson</b> </p></button>
+
+                        </form>
+                        <p class="name"> Pusta: 2 </p>
+                        <p class="name">ID:3</p>
+                    </div>
+        </div>
+    </div>
+    </a>
+    </span> 
+    </li>
+    
+                            
+    
+                    </span>
+    </ul>
+    
+    </li>
+    
+    </ul>
+
+    </div>
+    </div>
+
+
+
+    <script>
+        $(function() {
+            $('.genealogy-tree ul').hide();
+            $('.genealogy-tree>ul').show();
+            $('.genealogy-tree ul.active').show();
+            $('.genealogy-tree li').on('click', function(e) {
+                var children = $(this).find('> ul');
+                if (children.is(":visible")) children.hide('fast').removeClass('active');
+                else children.show('fast').addClass('active');
+                e.stopPropagation();
+            });
+        });
+    </script>
+</body>
+
+
+
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.easing.1.3.js"></script>
+    <script src="/static/js/jquery.waypoints.min.js"></script>
+    <script src="/static/js/jquery.stellar.min.js"></script>
+    <script src="/static/js/jquery.animateNumber.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="/static/js/google-map.js"></script>
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+</html>
